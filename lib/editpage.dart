@@ -114,6 +114,18 @@ class _EditPageState extends State<EditPage> {
                                               .getAt(index)
                                               .items
                                               .add(model);
+                                          schedules.putAt(
+                                              index,
+                                              ScheduleModel(
+                                                  name: schedules
+                                                      .getAt(index)
+                                                      .name,
+                                                  items: schedules
+                                                      .getAt(index)
+                                                      .items,
+                                                  timeCreated: schedules
+                                                      .getAt(index)
+                                                      .timeCreated));
                                           reset();
                                           setState(() {
                                             title.text = "";
@@ -149,6 +161,12 @@ class _EditPageState extends State<EditPage> {
                           : deltasks.forEach((element) {
                               schedules.getAt(index).items.remove(element);
                             });
+                      schedules.putAt(
+                          index,
+                          ScheduleModel(
+                              name: schedules.getAt(index).name,
+                              items: schedules.getAt(index).items,
+                              timeCreated: schedules.getAt(index).timeCreated));
                       reset();
                     })
               ],
@@ -181,6 +199,14 @@ class _EditPageState extends State<EditPage> {
                                         e.time == element.time)
                                     .first
                                     .select = v;
+                                schedules.putAt(
+                                    index,
+                                    ScheduleModel(
+                                        name: schedules.getAt(index).name,
+                                        items: schedules.getAt(index).items,
+                                        timeCreated: schedules
+                                            .getAt(index)
+                                            .timeCreated));
                               });
                             },
                             selected: e.select,
