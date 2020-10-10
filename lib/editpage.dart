@@ -104,7 +104,8 @@ class _EditPageState extends State<EditPage> {
                                 actions: <Widget>[
                                   FlatButton(
                                       onPressed: () {
-                                        if (_formkey.currentState.validate()) {
+                                        if (_formkey.currentState.validate() &&
+                                            time != null) {
                                           task model = task(
                                               title: title.text,
                                               time: time,
@@ -119,6 +120,9 @@ class _EditPageState extends State<EditPage> {
                                             time = DateTime.now();
                                           });
                                           Navigator.pop(context);
+                                        } else if (time == null) {
+                                          showMsg(
+                                              "You have'nt selected the time");
                                         }
                                         ;
                                       },
